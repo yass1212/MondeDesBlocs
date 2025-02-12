@@ -1,14 +1,14 @@
-package MDB;
+package src.MDB;
 
 public class Bloc {
-    private TailleCube Taille;
+    private TailleBloc Taille;
 
-    private String getTaille() {
+    private TailleBloc getTaille() {
         // Automatically generated method. Please do not modify this code.
-        return this.Taille.toString();
+        return this.Taille;
     }
 
-    private void setTaille(final TailleCube value) {
+    private void setTaille(final TailleBloc value) {
         // Automatically generated method. Please do not modify this code.
         this.Taille = value;
     }
@@ -25,6 +25,14 @@ public class Bloc {
         this.couleur = value;
     }
 
+
+
+
+
+
+
+
+
     private Bloc dessous;
 
     private Bloc getDessous() {
@@ -38,18 +46,21 @@ public class Bloc {
     }
 
     // vérifie si le cube est de la même taille ou plus grand que la taille demandée
-    public boolean TailleSuffisante(final TailleCube taille) {
+    public boolean TailleSuffisante(final TailleBloc taille) {
 
         return (this.getTaille().equals(taille));
 
     }
 
     // compare la taille et couleur entrée à celle du cube pour savoir si le cube correspond à la description
-    public boolean Correspond_description(final TailleCube taille, final String couleur) {
+    public boolean Correspond_description(final TailleBloc taille, final String couleur) {
 
-        return (this.getTaille() == taille.toString()
+        int tailleCorrespond = this.getTaille().compareTo(taille);
+        if (tailleCorrespond >= 0) {
+            return this.getCouleur().equals(couleur);
+        }
 
-                && this.getCouleur().equals(couleur));
+        return false;
 
     }
 

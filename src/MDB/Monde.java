@@ -1,7 +1,4 @@
-package MDB;
-
-import MDB.Robot;
-import MDB.Table;
+package src.MDB;
 
 public class Monde {
     private Robot robot;

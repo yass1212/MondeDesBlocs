@@ -1,4 +1,4 @@
-package MDB;
+package src.MDB;
 
 public class Robot {
     private Table table;
