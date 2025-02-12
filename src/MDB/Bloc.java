@@ -1,6 +1,9 @@
 package src.MDB;
 
 public class Bloc {
+
+
+    /// TAILLE /////////////////////////////////////////////////////////////////////////////////////////////////////////
     private TailleBloc Taille;
 
     private TailleBloc getTaille() {
@@ -13,6 +16,8 @@ public class Bloc {
         this.Taille = value;
     }
 
+
+    /// COULEUR ////////////////////////////////////////////////////////////////////////////////////////////////////////
     private String couleur;
 
     private String getCouleur() {
@@ -27,12 +32,7 @@ public class Bloc {
 
 
 
-
-
-
-
-
-
+    /// BLOC DESSOUS ///////////////////////////////////////////////////////////////////////////////////////////////////
     private Bloc dessous;
 
     private Bloc getDessous() {
@@ -45,10 +45,36 @@ public class Bloc {
         this.dessous = value;
     }
 
+
+
+
+    /// CONSTRUCTEUR ///////////////////////////////////////////////////////////////////////////////////////////////////
+    public Bloc(final TailleBloc taille, final String couleur) {
+        this.setTaille(taille);
+        this.setCouleur(couleur);
+    }
+
+
+
+
+
+
+    /// METHODES ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // vérifie si le cube est de la même taille ou plus grand que la taille demandée
     public boolean TailleSuffisante(final TailleBloc taille) {
 
-        return (this.getTaille().equals(taille));
+        int tailleCorrespond = this.getTaille().compareTo(taille);
+
+        System.out.println("taille :");
+        System.out.println(tailleCorrespond);
+
+
+        if (tailleCorrespond >= 0) {
+            System.out.println("La taille correspond");
+        }
+        System.out.println("La taille correspond PAS");
+        return false;
 
     }
 
@@ -56,17 +82,23 @@ public class Bloc {
     public boolean Correspond_description(final TailleBloc taille, final String couleur) {
 
         int tailleCorrespond = this.getTaille().compareTo(taille);
-        if (tailleCorrespond >= 0) {
-            return this.getCouleur().equals(couleur);
-        }
 
+        //System.out.println("taille :");
+        //System.out.println(tailleCorrespond);
+        if (tailleCorrespond == 0) {
+            //System.out.println("correspond à la taille");
+            //System.out.println(this.getCouleur().equalsIgnoreCase(couleur));
+            return this.getCouleur().equalsIgnoreCase(couleur);
+        }
+        //System.out.println("La taille correspond PAS");
         return false;
 
     }
 
+
+
     public Bloc demandeBlocDessous() {
-        // TODO Auto-generated return
-        return null;
+        return getDessous();
     }
 
 }

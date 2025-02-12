@@ -6,10 +6,20 @@ public class Main {
         System.out.println("hello");
 
 
-        Bloc bloc = new Bloc();
-        bloc.Cree_bloc("GRAND", "ROUGE");
-        TailleBloc taille1 = TailleBloc.MOYEN;
-        bloc.Correspond_description(taille1, "rouge");
+        TailleBloc taillePETIT = TailleBloc.PETIT;
+        TailleBloc tailleMOYEN = TailleBloc.MOYEN;
+        TailleBloc tailleGRAND = TailleBloc.GRAND;
+
+
+
+        Bloc blocA = new Bloc(TailleBloc.PETIT, "ROUGE");
+
+
+
+
+        blocA.Correspond_description(taillePETIT, "rouge");
+
+
 
 
     }
