@@ -1,5 +1,5 @@
 package MDB;
 
-public enum TailleCube {
+public enum TailleBloc {
     PETIT, MOYEN, GRAND
 }

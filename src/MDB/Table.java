@@ -3,12 +3,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
-    private List<Bloc> sommets = new ArrayList<Bloc> ();
-
-    public void Ajout_bloc_table(final Bloc BlocAjouter) {
+    private List<Bloc> sommets;
+    
+    public Table() {
+    	this.sommets = new ArrayList<Bloc>();
     }
 
-    public Bloc verifieDispoSommet(final TailleCube taille, final String couleur) {
+    public void Ajout_bloc_table(final Bloc BlocAjouter) {
+    	sommets.add(BlocAjouter);
+    }
+
+    public Bloc verifieDispoSommet(final TailleBloc taille, final String couleur) {
         Bloc res = null;
         for(Bloc bloc : sommets) {
         	if (bloc.Correspond_description(taille, couleur)) {
