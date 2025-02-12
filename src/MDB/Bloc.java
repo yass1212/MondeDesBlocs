@@ -54,8 +54,7 @@ public class Bloc {
     }
 
     public Bloc demandeBlocDessous() {
-        // TODO Auto-generated return
-        return null;
+        return getDessous();
     }
 
 }
