@@ -1,12 +1,21 @@
 package src.MDB;
 
 public class Bloc {
-
-
-    /// TAILLE /////////////////////////////////////////////////////////////////////////////////////////////////////////
     private TailleBloc Taille;
+    
+  /// CONSTRUCTEUR ///////////////////////////////////////////////////////////////////////////////////////////////////
+    public Bloc(final TailleBloc taille, final String couleur) {
+        this.setTaille(taille);
+        this.setCouleur(couleur);
+    }
 
-    private TailleBloc getTaille() {
+    // bloc par défaut
+    public Bloc() {
+        this.setTaille(TailleBloc.PETIT);
+        this.setCouleur("noir");
+    }
+
+    public String getTaille() {
         // Automatically generated method. Please do not modify this code.
         return this.Taille;
     }
@@ -20,7 +29,7 @@ public class Bloc {
     /// COULEUR ////////////////////////////////////////////////////////////////////////////////////////////////////////
     private String couleur;
 
-    private String getCouleur() {
+    public String getCouleur() {
         // Automatically generated method. Please do not modify this code.
         return this.couleur;
     }
@@ -45,6 +54,8 @@ public class Bloc {
         this.dessous = value;
     }
 
+    // vérifie si le cube est de la même taille ou plus grand que la taille demandée
+    public boolean TailleSuffisante(final TailleBloc taille) {
 
 
 

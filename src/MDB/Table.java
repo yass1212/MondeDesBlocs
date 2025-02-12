@@ -3,12 +3,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
-    private List<Bloc> sommets = new ArrayList<Bloc> ();
-
-    public void Ajout_bloc_table(final Bloc BlocAjouter) {
+    public List<Bloc> sommets;
+    
+    public Table() {
+    	this.sommets = new ArrayList<Bloc>();
     }
 
-    public Bloc verifieDispoSommet(final TailleCube taille, final String couleur) {
+    public void Ajout_bloc_table(final Bloc BlocAjouter) {
+    	sommets.add(BlocAjouter);
+    }
+    
+
+    public Bloc verifieDispoSommet(final TailleBloc taille, final String couleur) {
         Bloc res = null;
         for(Bloc bloc : sommets) {
         	if (bloc.Correspond_description(taille, couleur)) {
@@ -19,7 +25,15 @@ public class Table {
        
     }
 
-    public void Ajout_bloc_sommet(final Bloc cube) {
+    public void Ajout_bloc_sommet(TailleBloc tailleSocle, String couleurSocle, Bloc blocAjouter) {
+    	Bloc blocSocle = verifieDispoSommet(tailleSocle, couleurSocle);
+    	if (blocSocle != null) {
+    		majSommet(blocSocle, blocAjouter);
+			
+		} else {
+			System.out.println("Aucun Sommet correspondant");
+		}
+    	
     }
 
     public Bloc renvoieBloc(final String taille, final String couleur) {
@@ -28,7 +42,8 @@ public class Table {
     }
 
     public boolean majSommet(final Bloc BlocSocle, final Bloc BlocPose) {
-        // TODO Auto-generated return
+        sommets.remove(BlocSocle);
+        sommets.add(BlocPose);
         return false;
     }
 
