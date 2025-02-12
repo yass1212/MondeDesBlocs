@@ -22,3 +22,33 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+/.metadata/
+.DS_Store
+.idea/*
+
+
+
+# Fichiers de compilation Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Répertoires de build
+/target/
+/out/
+/bin/
+/build/
+
+# Fichiers de l'IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Fichiers de configuration spécifiques à Eclipse
+.settings/
+.project
+.classpath
+
