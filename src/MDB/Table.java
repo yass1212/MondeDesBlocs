@@ -36,7 +36,7 @@ public class Table {
     	
     }
 
-    public Bloc renvoieBloc(final String taille, final String couleur) {
+    public Bloc renvoieBloc(final TailleBloc taille, final Couleur couleur) {
         // TODO Auto-generated return
         return null;
     }
