@@ -16,12 +16,12 @@ public class Main {
 
 
 
-        Bloc blocA = new Bloc(TailleBloc.PETIT, "ROUGE");
+        Bloc blocA = new Bloc(TailleBloc.PETIT, Couleur.rouge);
 
 
 
 
-        blocA.Correspond_description(taillePETIT, "rouge");
+        blocA.Correspond_description(taillePETIT, Couleur.rouge);
 
 
 

@@ -6,9 +6,10 @@ public class Table {
     private List<Bloc> sommets = new ArrayList<Bloc> ();
 
     public void Ajout_bloc_table(final Bloc BlocAjouter) {
+        sommets.add(BlocAjouter);
     }
 
-    public Bloc verifieDispoSommet(final TailleCube taille, final String couleur) {
+    public Bloc verifieDispoSommet(final TailleBloc taille, final Couleur couleur) {
         Bloc res = null;
         for(Bloc bloc : sommets) {
         	if (bloc.Correspond_description(taille, couleur)) {
@@ -19,10 +20,10 @@ public class Table {
        
     }
 
-    public void Ajout_bloc_sommet(final Bloc cube) {
+    public void Ajout_bloc_sommet(final TailleBloc taille, final Couleur couleur) {
     }
 
-    public Bloc renvoieBloc(final String taille, final String couleur) {
+    public Bloc renvoieBloc(final TailleBloc taille, final Couleur couleur) {
         // TODO Auto-generated return
         return null;
     }
