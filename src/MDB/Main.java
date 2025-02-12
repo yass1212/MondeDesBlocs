@@ -6,6 +6,10 @@ public class Main {
         System.out.println("hello");
 
 
+
+        Monde monde = new Monde();
+
+
         TailleBloc taillePETIT = TailleBloc.PETIT;
         TailleBloc tailleMOYEN = TailleBloc.MOYEN;
         TailleBloc tailleGRAND = TailleBloc.GRAND;

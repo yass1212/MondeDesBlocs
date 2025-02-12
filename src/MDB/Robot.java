@@ -5,6 +5,12 @@ public class Robot {
 
     private Bloc bloc_tenu;
 
+
+
+
+
+
+    ///  METHODES ///
     public void Cree_bloc(final String couleur, final String taille) {
     }
 
