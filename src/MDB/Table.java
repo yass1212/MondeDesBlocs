@@ -8,9 +8,15 @@ public class Table {
     public void Ajout_bloc_table(final Bloc BlocAjouter) {
     }
 
-    public Bloc verifieDispoSommet(final String taille, final String couleur) {
-        // TODO Auto-generated return
-        return null;
+    public Bloc verifieDispoSommet(final TailleCube taille, final String couleur) {
+        Bloc res = null;
+        for(Bloc bloc : sommets) {
+        	if (bloc.Correspond_description(taille, couleur)) {
+				res = bloc;
+			}
+        }
+        return res;
+       
     }
 
     public void Ajout_bloc_sommet(final Bloc cube) {
