@@ -15,7 +15,7 @@ public class Bloc {
         this.setCouleur("noir");
     }
 
-    private String getTaille() {
+    public String getTaille() {
         // Automatically generated method. Please do not modify this code.
         return this.Taille.toString();
     }
@@ -27,7 +27,7 @@ public class Bloc {
 
     private String couleur;
 
-    private String getCouleur() {
+    public String getCouleur() {
         // Automatically generated method. Please do not modify this code.
         return this.couleur;
     }

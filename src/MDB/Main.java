@@ -27,7 +27,10 @@ public class Main {
         System.out.println((table1.verifieDispoSommet(taillePETIT, "VERT")));
         System.out.println(table1.verifieDispoSommet(taillePETIT, "ROSE"));
         System.out.println(table1.verifieDispoSommet(tailleGRAND, "VERT"));
-        //table1.Ajout_bloc_table(blocA);
+        
+        table1.Ajout_bloc_sommet(taillePETIT, "VERT", blocC);
+        
+        //System.out.println(table1.sommets.get(1).getCouleur());
         
         
         
