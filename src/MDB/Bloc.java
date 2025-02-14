@@ -1,10 +1,10 @@
-package src.MDB;
+package MDB;
 
 public class Bloc {
     private TailleBloc Taille;
     
   /// CONSTRUCTEUR ///////////////////////////////////////////////////////////////////////////////////////////////////
-    public Bloc(final TailleBloc taille, final String couleur) {
+    public Bloc(final TailleBloc taille, final Couleur couleur) {
         this.setTaille(taille);
         this.setCouleur(couleur);
     }
@@ -12,10 +12,10 @@ public class Bloc {
     // bloc par défaut
     public Bloc() {
         this.setTaille(TailleBloc.PETIT);
-        this.setCouleur("noir");
+        this.setCouleur(Couleur.noir);
     }
 
-    public String getTaille() {
+    public TailleBloc getTaille() {
         // Automatically generated method. Please do not modify this code.
         return this.Taille;
     }
@@ -54,22 +54,7 @@ public class Bloc {
         this.dessous = value;
     }
 
-    // vérifie si le cube est de la même taille ou plus grand que la taille demandée
-    public boolean TailleSuffisante(final TailleBloc taille) {
-
-
-    /// CONSTRUCTEUR ///////////////////////////////////////////////////////////////////////////////////////////////////
-    public Bloc(final TailleBloc taille, final Couleur couleur) {
-        this.setTaille(taille);
-        this.setCouleur(couleur);
-    }
-
-    // bloc par défaut
-    public Bloc() {
-        this.setTaille(TailleBloc.PETIT);
-        this.setCouleur(Couleur.noir);
-    }
-
+  
 
 
 

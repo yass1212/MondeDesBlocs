@@ -1,4 +1,4 @@
-package src.MDB;
+package MDB;
 
 public class Robot {
 
@@ -60,8 +60,8 @@ public class Robot {
         table.Ajout_bloc_table(bloc_tenu);
     }
 
-    public void poserBlocSurBloc(final TailleBloc taille, final Couleur couleur) {
-        table.Ajout_bloc_sommet(taille, couleur);
+    public void poserBlocSurBloc(final TailleBloc taille, final Couleur couleur, Bloc BlocPoser) {
+        table.Ajout_bloc_sommet(taille, couleur,BlocPoser);
     }
 
     public void prendreBloc(final TailleBloc taille, final Couleur couleur) {

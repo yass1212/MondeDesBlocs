@@ -1,4 +1,4 @@
-package src.MDB;
+package MDB;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class Table {
     }
     
 
-    public Bloc verifieDispoSommet(final TailleBloc taille, final String couleur) {
+    public Bloc verifieDispoSommet(final TailleBloc taille, final Couleur couleur) {
         Bloc res = null;
         for(Bloc bloc : sommets) {
         	if (bloc.Correspond_description(taille, couleur)) {
@@ -25,7 +25,7 @@ public class Table {
        
     }
 
-    public void Ajout_bloc_sommet(TailleBloc tailleSocle, String couleurSocle, Bloc blocAjouter) {
+    public void Ajout_bloc_sommet(TailleBloc tailleSocle, Couleur couleurSocle, Bloc blocAjouter) {
     	Bloc blocSocle = verifieDispoSommet(tailleSocle, couleurSocle);
     	if (blocSocle != null) {
     		majSommet(blocSocle, blocAjouter);
