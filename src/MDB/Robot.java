@@ -1,4 +1,5 @@
-package src.MDB;
+package MDB;
+
 
 public class Robot {
 
@@ -20,12 +21,12 @@ public class Robot {
     /// BLOC TENU //////////////////////////////////////////////////////////////////////////////////////////////////////
     private Bloc bloc_tenu;
 
-    private Bloc getBloc_tenu() {
+    public Bloc getBloc_tenu() {
         // Automatically generated method. Please do not modify this code.
         return this.bloc_tenu;
     }
 
-    private void setBloc_tenu(final Bloc value) {
+    public void setBloc_tenu(final Bloc value) {
         // Automatically generated method. Please do not modify this code.
         this.bloc_tenu = value;
     }
@@ -57,17 +58,35 @@ public class Robot {
     }
 
     public void poserBlocSurTable() {
-        table.Ajout_bloc_table(bloc_tenu);
+        if (!this.Verif_cube_tenu()) {
+            System.out.println("Le robot ne tient pas de bloc");
+        } else {
+            table.Ajout_bloc_table(bloc_tenu);
+            majPreemption(null);
+        }
+
     }
 
     public void poserBlocSurBloc(final TailleBloc taille, final Couleur couleur) {
-        table.Ajout_bloc_sommet(taille, couleur);
+
+        if (!this.Verif_cube_tenu()) {
+            System.out.println("Le robot ne tient pas de bloc");
+        } else {
+
+            if (table.Ajout_bloc_sommet(taille, couleur, this.bloc_tenu)) {
+                majPreemption(null);
+            }
+
+            System.out.println("Le bloc n'a pas été posé");
+        }
+
     }
 
     public void prendreBloc(final TailleBloc taille, final Couleur couleur) {
 
         if (!this.Verif_cube_tenu()) {
-            table.renvoieBloc(taille, couleur);
+            Bloc nouveauBloc = table.renvoieBloc(taille, couleur);
+            majPreemption(nouveauBloc);
         } else {
             System.out.println("Le robot tient déjà un bloc");
         }
@@ -82,6 +101,34 @@ public class Robot {
     // détruit le bloc tenu par le robot
     public void detruitBloc() {
         this.setBloc_tenu(null);
+    }
+
+
+    public void afficheRobot() {
+
+
+//        if (this.bloc_tenu != null) {
+//            System.out.println(this.bloc_tenu);
+//            this.bloc_tenu.afficherBloc();
+//        }
+
+
+        Monde.ecrire(Couleur.bleu, "  ===========");
+        Monde.ecrire(Couleur.bleu, "  |       |");
+        if(getBloc_tenu() != null)
+        {
+            Monde.ecrire2(Couleur.bleu, "  |      ");
+            getBloc_tenu().afficherBloc();
+            System.out.println();
+        }
+        else
+        {
+            Monde.ecrire(Couleur.bleu, "  |");
+        }
+        Monde.ecrire(Couleur.bleu, "  |");
+        Monde.ecrire(Couleur.bleu, "  |");
+        //Monde.ecrire(Couleur.bleu, "=====");
+
     }
 
 }

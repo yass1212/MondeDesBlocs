@@ -1,6 +1,4 @@
-package src.MDB;
-
-import java.io.*;
+package MDB;
 
 public enum Couleur
 {
@@ -13,9 +11,9 @@ public enum Couleur
 		return Couleur.rouge;
 	}
 
-//public static void testCouleur() {
-//	for (Couleur c:Couleur.values())
-//		Monde.ecrire(c,"test couleur");
-//    }
+	public static void testCouleur() {
+		for (Couleur c:Couleur.values())
+			Monde.ecrire(c,"test couleur");
+		}
 
 }

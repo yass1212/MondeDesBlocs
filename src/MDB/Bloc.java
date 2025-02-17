@@ -1,10 +1,12 @@
-package src.MDB;
+package MDB;
+
 
 public class Bloc {
     private TailleBloc Taille;
+
     
   /// CONSTRUCTEUR ///////////////////////////////////////////////////////////////////////////////////////////////////
-    public Bloc(final TailleBloc taille, final String couleur) {
+    public Bloc(final TailleBloc taille, final Couleur couleur) {
         this.setTaille(taille);
         this.setCouleur(couleur);
     }
@@ -12,10 +14,10 @@ public class Bloc {
     // bloc par défaut
     public Bloc() {
         this.setTaille(TailleBloc.PETIT);
-        this.setCouleur("noir");
+        this.setCouleur(Couleur.noir);
     }
 
-    public String getTaille() {
+    public TailleBloc getTaille() {
         // Automatically generated method. Please do not modify this code.
         return this.Taille;
     }
@@ -29,12 +31,12 @@ public class Bloc {
     /// COULEUR ////////////////////////////////////////////////////////////////////////////////////////////////////////
     private Couleur couleur;
 
-    private Couleur getCouleur() {
+    public Couleur getCouleur() {
         // Automatically generated method. Please do not modify this code.
         return this.couleur;
     }
 
-    private void setCouleur(final Couleur value) {
+    public void setCouleur(final Couleur value) {
         // Automatically generated method. Please do not modify this code.
         this.couleur = value;
     }
@@ -44,31 +46,18 @@ public class Bloc {
     /// BLOC DESSOUS ///////////////////////////////////////////////////////////////////////////////////////////////////
     private Bloc dessous;
 
-    private Bloc getDessous() {
+    public Bloc getDessous() {
         // Automatically generated method. Please do not modify this code.
         return this.dessous;
     }
 
-    private void setDessous(final Bloc value) {
+    public void setDessous(final Bloc value) {
         // Automatically generated method. Please do not modify this code.
         this.dessous = value;
     }
 
-    // vérifie si le cube est de la même taille ou plus grand que la taille demandée
-    public boolean TailleSuffisante(final TailleBloc taille) {
 
 
-    /// CONSTRUCTEUR ///////////////////////////////////////////////////////////////////////////////////////////////////
-    public Bloc(final TailleBloc taille, final Couleur couleur) {
-        this.setTaille(taille);
-        this.setCouleur(couleur);
-    }
-
-    // bloc par défaut
-    public Bloc() {
-        this.setTaille(TailleBloc.PETIT);
-        this.setCouleur(Couleur.noir);
-    }
 
 
 
@@ -97,6 +86,7 @@ public class Bloc {
     // compare la taille et couleur entrée à celle du cube pour savoir si le cube correspond à la description
     public boolean Correspond_description(final TailleBloc taille, final Couleur couleur) {
 
+        /*
         int tailleCorrespond = this.getTaille().compareTo(taille);
 
         //System.out.println("taille :");
@@ -108,7 +98,13 @@ public class Bloc {
         }
         //System.out.println("La taille correspond PAS");
         return false;
+        */
 
+
+        if (this.TailleSuffisante(taille)) {
+            return this.getCouleur().equals(couleur);
+        }
+        return false;
     }
 
 
@@ -117,4 +113,16 @@ public class Bloc {
         return getDessous();
     }
 
+
+
+    public void afficherBloc() {
+
+        if (this.getTaille() == TailleBloc.PETIT) {
+            Monde.ecrire2(this.getCouleur(), "P");
+        } else if (this.getTaille() == TailleBloc.MOYEN) {
+            Monde.ecrire2(this.getCouleur(), "M");
+        } else {
+            Monde.ecrire2(this.getCouleur(), "G");
+        }
+    }
 }
