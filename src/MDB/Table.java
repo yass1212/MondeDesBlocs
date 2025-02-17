@@ -179,13 +179,10 @@ public class Table {
 
 
 
-        int lig = tableau.length;
-        int col = tableau[0].length;
+        for (int j = 0; j < colonnes; j++) {
+            int writeIndex = lignes - 1; // Commencer tout en bas
 
-        for (int j = 0; j < col; j++) {
-            int writeIndex = lig - 1; // Commencer tout en bas
-
-            for (int i = lig - 1; i >= 0; i--) {
+            for (int i = lignes - 1; i >= 0; i--) {
                 if (tableau[i][j] != null) {
                     tableau[writeIndex][j] = tableau[i][j]; // Déplacer le bloc vers le bas
                     if (writeIndex != i) {
@@ -226,21 +223,25 @@ public class Table {
 
 
         // Afficher le tableau sous forme de tableau de blocs
-        for (int i = 0; i < lignes; i++) {
-            if (i != lignes-1) {
-                Monde.ecrire2(Couleur.bleu, "  |       ");
-            } else {
-                Monde.ecrire2(Couleur.bleu, "=====     ");
-            }
-
-            for (int j = 0; j < colonnes; j++) {
-                if (tableau[i][j] != null) {
-                    tableau[i][j].afficherBloc(); // Affiche le nom du bloc
+        if (lignes != 0) {
+            for (int i = 0; i < lignes; i++) {
+                if (i != lignes - 1) {
+                    Monde.ecrire2(Couleur.bleu, "  |       ");
                 } else {
-                    System.out.print("  "); // Espace si aucun bloc à cet emplacement
+                    Monde.ecrire2(Couleur.bleu, "=====     ");
                 }
+
+                for (int j = 0; j < colonnes; j++) {
+                    if (tableau[i][j] != null) {
+                        tableau[i][j].afficherBloc(); // Affiche le nom du bloc
+                    } else {
+                        System.out.print("  "); // Espace si aucun bloc à cet emplacement
+                    }
+                }
+                System.out.println();
             }
-            System.out.println();
+        } else {
+            Monde.ecrire2(Couleur.bleu, "=====     ");
         }
     }
 

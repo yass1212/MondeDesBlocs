@@ -71,12 +71,19 @@ public class Bloc {
 
         int tailleCorrespond = this.getTaille().compareTo(taille);
 
+
+        System.out.println(this.getTaille().name());
+        System.out.println(taille.name());
+
+
+
         System.out.println("taille :");
         System.out.println(tailleCorrespond);
 
 
         if (tailleCorrespond >= 0) {
             System.out.println("La taille correspond");
+            return true;
         }
         System.out.println("La taille correspond PAS");
         return false;
@@ -102,8 +109,12 @@ public class Bloc {
 
 
         if (this.TailleSuffisante(taille)) {
+            if (this.getCouleur().equals(couleur)) {
+                System.out.println("La couleur correspond");
+            }
             return this.getCouleur().equals(couleur);
         }
+        System.out.println("La couleur correspond PAS");
         return false;
     }
 

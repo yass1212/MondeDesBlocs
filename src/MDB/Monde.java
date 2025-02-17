@@ -66,31 +66,31 @@ public class Monde {
         Robot D2R2 = new Robot(tab);
 
 
-        Bloc GRANDROUGE = new Bloc(TailleBloc.GRAND, Couleur.rouge);
-        Bloc MOYENVERT = new Bloc(TailleBloc.MOYEN, Couleur.vert);
-        Bloc GRANDJAUNE = new Bloc(TailleBloc.GRAND, Couleur.jaune);
-        Bloc PETITBLEU = new Bloc(TailleBloc.PETIT, Couleur.bleu);
-
-        System.out.println("Bloc GRANDROUGE : " + GRANDROUGE);
-        System.out.println("Bloc MOYENVERT : " + MOYENVERT);
-        System.out.println("Bloc GRANDJAUNE : " + GRANDJAUNE);
-
-
-        Bloc PETITBLEU2 = new Bloc(TailleBloc.PETIT, Couleur.bleu);
-        System.out.println("Bloc PETITBLEU2 : " + PETITBLEU2);
-
-        tab.sommets.add(GRANDROUGE);
-        tab.sommets.add(MOYENVERT);
-        tab.sommets.add(GRANDJAUNE);
-        tab.sommets.add(PETITBLEU);
-        tab.sommets.remove(PETITBLEU);
-
-        GRANDROUGE.setDessous(PETITBLEU2);
-
-        Bloc PETITBLEU3 = new Bloc(TailleBloc.PETIT, Couleur.bleu);
-        System.out.println("Bloc PETITBLEU3 : " + PETITBLEU3);
-
-        PETITBLEU2.setDessous(PETITBLEU3);
+//        Bloc GRANDROUGE = new Bloc(TailleBloc.GRAND, Couleur.rouge);
+//        Bloc MOYENVERT = new Bloc(TailleBloc.MOYEN, Couleur.vert);
+//        Bloc GRANDJAUNE = new Bloc(TailleBloc.GRAND, Couleur.jaune);
+//        Bloc PETITBLEU = new Bloc(TailleBloc.PETIT, Couleur.bleu);
+//
+//        System.out.println("Bloc GRANDROUGE : " + GRANDROUGE);
+//        System.out.println("Bloc MOYENVERT : " + MOYENVERT);
+//        System.out.println("Bloc GRANDJAUNE : " + GRANDJAUNE);
+//
+//
+//        Bloc PETITBLEU2 = new Bloc(TailleBloc.PETIT, Couleur.bleu);
+//        System.out.println("Bloc PETITBLEU2 : " + PETITBLEU2);
+//
+//        tab.sommets.add(GRANDROUGE);
+//        tab.sommets.add(MOYENVERT);
+//        tab.sommets.add(GRANDJAUNE);
+//        tab.sommets.add(PETITBLEU);
+//        tab.sommets.remove(PETITBLEU);
+//
+//        GRANDROUGE.setDessous(PETITBLEU2);
+//
+//        Bloc PETITBLEU3 = new Bloc(TailleBloc.PETIT, Couleur.bleu);
+//        System.out.println("Bloc PETITBLEU3 : " + PETITBLEU3);
+//
+//        PETITBLEU2.setDessous(PETITBLEU3);
 
 
 
@@ -115,6 +115,7 @@ public class Monde {
 
             //tab.sommets.forEach(bloc -> System.out.println(bloc));
 
+            ecrire(Couleur.bleu, "\t0 - afficher les règles");
             ecrire(Couleur.bleu, "\t1 - creer un cube");
             ecrire(Couleur.bleu, "\t2 - détruire un cube");
             System.out.println();
@@ -124,7 +125,7 @@ public class Monde {
             ecrire(Couleur.bleu, "\t5 - poser bloc sur bloc");
             System.out.println();
             ecrire(Couleur.bleu, "\t8 - afficher table");
-            ecrire(Couleur.bleu, "\t9 - afficher cube");
+            //ecrire(Couleur.bleu, "\t9 - afficher cube");
             System.out.println();
             ecrire(Couleur.bleu, "\tf - fin du monde");
             System.out.println();
@@ -136,14 +137,21 @@ public class Monde {
 
 
 
+                case '0':
+                    System.out.println("Vous ne pouvez poser un cube que sur un cube de taille équivalente ou plus grande.\nPar exemple : un cube petit peut être posé sur tous les cubes mais un cube grand ne peut être posé que sur un cube grand\n");
+                    break;
+
+
                 case '1':
                     System.out.println("Vous allez créer un cube");
                     System.out.print("Couleur du cube : ");
                     coul = Couleur.getCouleur(Keyboard.getString());
-			        ecrire (coul, "couleur saisie");
+
                     System.out.print("Taille (grand/moyen/petit) : ");
                     tc = TailleBloc.getTaille(Keyboard.getString());
-                    System.out.println("Un cube de couleur " + coul + " et de taille " + tc + " va être créé");
+                    System.out.print("Un cube de couleur ");
+                    ecrire2(coul, coul.name());
+                    System.out.println("et de taille " + tc + " va être créé");
                     Keyboard.pause();
 
                     D2R2.Cree_bloc(tc, coul);
@@ -170,7 +178,11 @@ public class Monde {
                     coul = Couleur.getCouleur(Keyboard.getString());
                     System.out.print("Taille (grand/moyen/petit) : ");
                     tc = TailleBloc.getTaille(Keyboard.getString());
-                    System.out.print("Vous allez prendre un cube de couleur " + coul + " et de taille " + tc + " s'il y en a un dans les sommets de la table");
+
+                    System.out.print("Vous allez prendre un cube de couleur ");
+                    ecrire2(coul, coul.name());
+                    System.out.println("et de taille " + tc + " s'il y en a un dans les sommets de la table");
+
                     Keyboard.pause();
 
                     D2R2.prendreBloc(tc, coul);
@@ -196,7 +208,7 @@ public class Monde {
                     coul = Couleur.getCouleur(Keyboard.getString());
                     System.out.println("Sur quelle taille voulez-vous poser que le cube ? (grand/moyen/petit) :");
                     tc = TailleBloc.getTaille(Keyboard.getString());
-                    System.out.println("Le cube tenu par le robot va être posé sur le cube si possible");
+                    System.out.println("Le cube tenu par le robot va être posé sur un cube correspondant à la description entrée s'il y en a un dans les sommets de la table");
                     Keyboard.pause();
 
                     D2R2.poserBlocSurBloc(tc, coul);
@@ -210,16 +222,16 @@ public class Monde {
                     //Keyboard.pause();
                     break;
 
-                case '9':
-                    System.out.println("Un grand cube rouge");
-                    GRANDROUGE.afficherBloc();
+//                case '9':
+//                    System.out.println("Un grand cube rouge");
+//                    GRANDROUGE.afficherBloc();
+//
+//                    Keyboard.pause();
+//                    break;
 
-                    Keyboard.pause();
-                    break;
 
                 case '\n':
                 case '\r':
-                default:
                     System.out.println("Entrez un caractère valide");
                     break;
             }

@@ -7,7 +7,9 @@ public enum Couleur
  public static Couleur getCouleur(String coulSaisie) {
 		for (Couleur c:Couleur.values())
 			if (c.name().equalsIgnoreCase(coulSaisie))
-				return c;		
+				return c;
+		// couleur par défaut
+	 	System.out.println("Couleur non reconnue, couleur par défaut: rouge");
 		return Couleur.rouge;
 	}
 
