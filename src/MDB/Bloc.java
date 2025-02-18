@@ -90,9 +90,9 @@ public class Bloc {
     }
 
     // compare la taille et couleur entrée à celle du cube pour savoir si le cube correspond à la description
-    public boolean Correspond_description(final TailleBloc taille, final Couleur couleur) {
+    public boolean Correspond_description(final TailleBloc taille, final Couleur couleur, final TailleBloc tailleAjouter, final Couleur couleurAjouter) {
 
-        if (this.TailleSuffisante(taille)) {
+        if (this.TailleSuffisante(tailleAjouter)) {
             if (this.getCouleur().equals(couleur)) {
                 System.out.println("La couleur correspond");
             }

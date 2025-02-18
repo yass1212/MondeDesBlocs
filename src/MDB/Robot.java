@@ -97,10 +97,10 @@ public class Robot {
             if (table.Ajout_bloc_sommet(taille, couleur, this.bloc_tenu)) {
                 // si c'est le cas, alors le robot ne tient plus de bloc
                 majPreemption(null);
+            } else {
+                // sinon, on affiche un message d'erreur
+                System.out.println("Le bloc n'a pas été posé");
             }
-
-            // sinon, on affiche un message d'erreur
-            System.out.println("Le bloc n'a pas été posé");
         }
 
     }
@@ -112,7 +112,7 @@ public class Robot {
 
         // si le robot ne tient pas de bloc, il peut prendre un bloc sur la table
         if (!this.Verif_cube_tenu()) {
-            Bloc nouveauBloc = table.renvoieBloc(taille, couleur);
+            Bloc nouveauBloc = table.renvoieBloc(taille, couleur, this.bloc_tenu);
             majPreemption(nouveauBloc);
         } else {
             System.out.println("Le robot tient déjà un bloc");

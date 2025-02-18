@@ -30,12 +30,21 @@ public class Table {
 
 
     // vérifie si un bloc correspond à la description donnée
-    public Bloc verifieDispoSommet(final TailleBloc taille, final Couleur couleur) {
+    public Bloc verifieDispoSommet(final TailleBloc taille, final Couleur couleur, final TailleBloc tailleAjouter, final Couleur couleurAjouter) {
         Bloc res = null;
         for(Bloc bloc : sommets) {
-        	if (bloc.Correspond_description(taille, couleur)) {
-				res = bloc;
-			}
+
+            if (tailleAjouter != null && couleurAjouter != null) {
+                if (bloc.Correspond_description(taille, couleur, tailleAjouter, couleurAjouter)) {
+                    res = bloc;
+                }
+            } else {
+                if (bloc.TailleSuffisante(tailleAjouter)) {
+                    if (bloc.getCouleur().equals(couleurAjouter)) {
+                        res = bloc;
+                    }
+                }
+            }
         }
         return res;
        
@@ -45,8 +54,9 @@ public class Table {
 
     // ajoute un bloc à un sommet
     public boolean Ajout_bloc_sommet(TailleBloc tailleSocle, Couleur couleurSocle, Bloc blocAjouter) {
-    	Bloc blocSocle = verifieDispoSommet(tailleSocle, couleurSocle);
+    	Bloc blocSocle = verifieDispoSommet(tailleSocle, couleurSocle, blocAjouter.getTaille(), blocAjouter.getCouleur());
     	if (blocSocle != null) {
+            blocAjouter.setDessous(blocSocle);
     		majSommet(blocSocle, blocAjouter);
             return true;
 			
@@ -59,8 +69,15 @@ public class Table {
 
 
     // renvoie un bloc correspondant à la description donnée
-    public Bloc renvoieBloc(final TailleBloc taille, final Couleur couleur) {
-        Bloc res = verifieDispoSommet(taille, couleur);
+    public Bloc renvoieBloc(final TailleBloc taille, final Couleur couleur, Bloc blocAjouter) {
+
+        Bloc res = null;
+        if (blocAjouter == null) {
+            res = verifieDispoSommet(taille, couleur, null, null);
+        } else {
+            res = verifieDispoSommet(taille, couleur, blocAjouter.getTaille(), blocAjouter.getCouleur());
+        }
+
         if (res == null) {
             System.out.println("Aucun bloc aux sommets des piles ne correspond à la description");
         } else {
@@ -73,8 +90,6 @@ public class Table {
         }
 
         if (res != null) {
-            System.out.println("RES :");
-            System.out.println(res);
             res.afficherBloc();
         } else {
             System.out.println("RES NULL");
