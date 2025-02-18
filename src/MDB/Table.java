@@ -3,18 +3,33 @@ package MDB;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Table {
+
+    /// SOMMETS ////////////////////////////////////////////////////////////////////////////////////////////////////////
     public List<Bloc> sommets;
-    
+
+
+
+    /// CONSTRUCTEUR ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // constructeur de la table
     public Table() {
     	this.sommets = new ArrayList<Bloc>();
     }
 
+
+
+    /// METHODES ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // ajoute un bloc à la table
     public void Ajout_bloc_table(final Bloc BlocAjouter) {
     	sommets.add(BlocAjouter);
     }
-    
 
+
+
+    // vérifie si un bloc correspond à la description donnée
     public Bloc verifieDispoSommet(final TailleBloc taille, final Couleur couleur) {
         Bloc res = null;
         for(Bloc bloc : sommets) {
@@ -26,6 +41,9 @@ public class Table {
        
     }
 
+
+
+    // ajoute un bloc à un sommet
     public boolean Ajout_bloc_sommet(TailleBloc tailleSocle, Couleur couleurSocle, Bloc blocAjouter) {
     	Bloc blocSocle = verifieDispoSommet(tailleSocle, couleurSocle);
     	if (blocSocle != null) {
@@ -39,6 +57,8 @@ public class Table {
     }
 
 
+
+    // renvoie un bloc correspondant à la description donnée
     public Bloc renvoieBloc(final TailleBloc taille, final Couleur couleur) {
         Bloc res = verifieDispoSommet(taille, couleur);
         if (res == null) {
@@ -64,7 +84,7 @@ public class Table {
 
 
 
-
+    // met à jour un sommet par un autre ou le supprime (en fonction de BlocPose)
     public void majSommet(final Bloc BlocSocle, final Bloc BlocPose) {
 
         if (BlocPose == null) {
@@ -78,52 +98,7 @@ public class Table {
 
 
 
-
-
-
-
-        // Fonction pour faire la rotation de la matrice de 90 degrés
-        public static void rotateMatrix(Bloc[][] matrix) {
-            int n = matrix.length;
-
-            // Transposer la matrice (échange les éléments [i][j] et [j][i])
-            for (int i = 0; i < n; i++) {
-                for (int j = i; j < n; j++) {
-                    Bloc temp = matrix[i][j];
-                    matrix[i][j] = matrix[j][i];
-                    matrix[j][i] = temp;
-                }
-            }
-
-            // Inverser chaque ligne de la matrice
-            for (int i = 0; i < n; i++) {
-                int left = 0;
-                int right = n - 1;
-                while (left < right) {
-                    Bloc temp = matrix[i][left];
-                    matrix[i][left] = matrix[i][right];
-                    matrix[i][right] = temp;
-                    left++;
-                    right--;
-                }
-            }
-        }
-
-        // Fonction pour afficher la matrice
-        public static void printMatrix(Bloc[][] matrix) {
-            for (int i = 0; i < matrix.length; i++) {
-                for (int j = 0; j < matrix[i].length; j++) {
-                    matrix[i][j].afficherBloc();
-                }
-                System.out.println();
-            }
-        }
-
-
-
-
-
-
+    // affiche la table
     public void afficherTable() {
         // Créer les piles sous forme de tableau de tableau
         int colonnes = sommets.size();
@@ -143,15 +118,6 @@ public class Table {
         // Créer le tableau bidimensionnel
         Bloc[][] tableau = new Bloc[lignes][colonnes];
 
-        // print tableau
-//        System.out.println("tableau de départ :");
-//        for (int i = 0; i < lignes; i++) {
-//            for (int j = 0; j < colonnes; j++) {
-//                System.out.print(tableau[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
-
         // Remplir le tableau avec les blocs
         for (int j = 0; j < colonnes; j++) {
             Bloc bloc = sommets.get(j);
@@ -160,22 +126,8 @@ public class Table {
                 tableau[hauteur][j] = bloc; // Remplir du bas vers le haut
                 hauteur++;
                 bloc = bloc.getDessous();
-
-                // print tableau
-//                System.out.println();
-//                System.out.println();
-//                System.out.println("tableau boucle");
-//                for (int i1 = 0; i1 < lignes; i1++) {
-//                    for (int j1 = 0; j1 < colonnes; j1++) {
-//                        System.out.print(tableau[i1][j1] + " ");
-//                    }
-//                    System.out.println();
-//                }
             }
         }
-
-
-
 
 
 
@@ -194,41 +146,13 @@ public class Table {
         }
 
 
-//        int hauteur2 = lignes-1;
-//
-//        for (int j2 = 0; j2 < colonnes; j2++) {
-//            for (int i2 = hauteur2; i2 >= 0; i2--) {
-//                if (tableau[hauteur2][j2] == null) {
-//                    tableau[hauteur2][j2] = tableau[hauteur2 - 1][j2];
-//                    tableau[hauteur2 - 1][j2] = null;
-//                }
-//            }
-//        }
-
-        // print tableau
-//        System.out.println();
-//        System.out.println();
-//        System.out.println("tableau sortie boucle");
-//        for (int i1 = 0; i1 < lignes; i1++) {
-//            for (int j1 = 0; j1 < colonnes; j1++) {
-//                System.out.print(tableau[i1][j1] + " ");
-//            }
-//            System.out.println();
-//        }
-
-
-
-
-
-
-
         // Afficher le tableau sous forme de tableau de blocs
         if (lignes != 0) {
             for (int i = 0; i < lignes; i++) {
                 if (i != lignes - 1) {
-                    Monde.ecrire2(Couleur.bleu, "  |       ");
+                    Monde.ecrireEspace(Couleur.bleu, "  |       ");
                 } else {
-                    Monde.ecrire2(Couleur.bleu, "=====     ");
+                    Monde.ecrireEspace(Couleur.bleu, "=====     ");
                 }
 
                 for (int j = 0; j < colonnes; j++) {
@@ -241,7 +165,7 @@ public class Table {
                 System.out.println();
             }
         } else {
-            Monde.ecrire2(Couleur.bleu, "=====     ");
+            Monde.ecrireEspace(Couleur.bleu, "=====     ");
         }
     }
 

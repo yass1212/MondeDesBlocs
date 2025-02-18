@@ -1,9 +1,12 @@
 package MDB;
 
+
 public enum TailleBloc {
+
+    // les tailles disponibles
     PETIT, MOYEN, GRAND;
 
-
+    // obtenir une couleur à partir d'une chaîne
     public static TailleBloc getTaille(String taille) {
         for (TailleBloc t: TailleBloc.values())
             if (t.name().equalsIgnoreCase(taille))
@@ -13,4 +16,4 @@ public enum TailleBloc {
         return TailleBloc.GRAND;
     }
 
-    }
+}

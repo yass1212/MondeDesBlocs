@@ -2,20 +2,9 @@ package MDB;
 
 
 public class Bloc {
+
+    /// TAILLE /////////////////////////////////////////////////////////////////////////////////////////////////////////
     private TailleBloc Taille;
-
-    
-  /// CONSTRUCTEUR ///////////////////////////////////////////////////////////////////////////////////////////////////
-    public Bloc(final TailleBloc taille, final Couleur couleur) {
-        this.setTaille(taille);
-        this.setCouleur(couleur);
-    }
-
-    // bloc par défaut
-    public Bloc() {
-        this.setTaille(TailleBloc.PETIT);
-        this.setCouleur(Couleur.noir);
-    }
 
     public TailleBloc getTaille() {
         // Automatically generated method. Please do not modify this code.
@@ -26,6 +15,7 @@ public class Bloc {
         // Automatically generated method. Please do not modify this code.
         this.Taille = value;
     }
+
 
 
     /// COULEUR ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -58,9 +48,18 @@ public class Bloc {
 
 
 
+    /// CONSTRUCTEUR ///////////////////////////////////////////////////////////////////////////////////////////////////
+    // constructeur du bloc
+    public Bloc(final TailleBloc taille, final Couleur couleur) {
+        this.setTaille(taille);
+        this.setCouleur(couleur);
+    }
 
-
-
+    // bloc par défaut
+    public Bloc() {
+        this.setTaille(TailleBloc.PETIT);
+        this.setCouleur(Couleur.noir);
+    }
 
 
 
@@ -93,21 +92,6 @@ public class Bloc {
     // compare la taille et couleur entrée à celle du cube pour savoir si le cube correspond à la description
     public boolean Correspond_description(final TailleBloc taille, final Couleur couleur) {
 
-        /*
-        int tailleCorrespond = this.getTaille().compareTo(taille);
-
-        //System.out.println("taille :");
-        //System.out.println(tailleCorrespond);
-        if (tailleCorrespond == 0) {
-            //System.out.println("correspond à la taille");
-            //System.out.println(this.getCouleur().equalsIgnoreCase(couleur));
-            return this.getCouleur().equals(couleur);
-        }
-        //System.out.println("La taille correspond PAS");
-        return false;
-        */
-
-
         if (this.TailleSuffisante(taille)) {
             if (this.getCouleur().equals(couleur)) {
                 System.out.println("La couleur correspond");
@@ -119,21 +103,21 @@ public class Bloc {
     }
 
 
-
+    // recupère le bloc dessous
     public Bloc demandeBlocDessous() {
         return getDessous();
     }
 
 
-
+    // affiche le bloc
     public void afficherBloc() {
 
         if (this.getTaille() == TailleBloc.PETIT) {
-            Monde.ecrire2(this.getCouleur(), "P");
+            Monde.ecrireEspace(this.getCouleur(), "P");
         } else if (this.getTaille() == TailleBloc.MOYEN) {
-            Monde.ecrire2(this.getCouleur(), "M");
+            Monde.ecrireEspace(this.getCouleur(), "M");
         } else {
-            Monde.ecrire2(this.getCouleur(), "G");
+            Monde.ecrireEspace(this.getCouleur(), "G");
         }
     }
 }
