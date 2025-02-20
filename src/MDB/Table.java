@@ -39,8 +39,8 @@ public class Table {
                     res = bloc;
                 }
             } else {
-                if (bloc.TailleSuffisante(tailleAjouter)) {
-                    if (bloc.getCouleur().equals(couleurAjouter)) {
+                if (bloc.getTaille().equals(taille)) {
+                    if (bloc.getCouleur().equals(couleur)) {
                         res = bloc;
                     }
                 }
@@ -91,9 +91,9 @@ public class Table {
 
         if (res != null) {
             res.afficherBloc();
-        } else {
-            System.out.println("RES NULL");
-        }
+        }// else {
+        //    System.out.println("RES NULL");
+        //}
         return res;
     }
 

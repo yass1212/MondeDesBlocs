@@ -72,9 +72,9 @@ public class Monde {
 
         // affichage d'un message de bienvenue
         System.out.println();
-        ecrire(Couleur.bleu, "\t\t\t\t/////////////////////////////////////////");
-        ecrire(Couleur.bleu, "\t\t\t\t/// Bienvenue dans le Monde des Blocs ///");
-        ecrire(Couleur.bleu, "\t\t\t\t/////////////////////////////////////////");
+        ecrire(Couleur.cyan, "\t\t\t\t/////////////////////////////////////////");
+        ecrire(Couleur.cyan, "\t\t\t\t/// Bienvenue dans le Monde des Blocs ///");
+        ecrire(Couleur.cyan, "\t\t\t\t/////////////////////////////////////////");
 
 
         // menu
@@ -93,18 +93,18 @@ public class Monde {
 
 
             // options
-            ecrire(Couleur.bleu, "\t0 - afficher les règles");
-            ecrire(Couleur.bleu, "\t1 - creer un cube");
-            ecrire(Couleur.bleu, "\t2 - détruire un cube");
+            ecrire(Couleur.gris, "\t0 - afficher les règles");
+            ecrire(Couleur.gris, "\t1 - creer un cube");
+            ecrire(Couleur.gris, "\t2 - détruire un cube");
             System.out.println();
-            ecrire(Couleur.bleu, "\t3 - prendre un cube");
+            ecrire(Couleur.gris, "\t3 - prendre un cube");
             System.out.println();
-            ecrire(Couleur.bleu, "\t4 - poser bloc sur la table");
-            ecrire(Couleur.bleu, "\t5 - poser bloc sur bloc");
+            ecrire(Couleur.gris, "\t4 - poser bloc sur la table");
+            ecrire(Couleur.gris, "\t5 - poser bloc sur bloc");
             System.out.println();
-            ecrire(Couleur.bleu, "\t8 - afficher table");
+            ecrire(Couleur.gris, "\t8 - afficher table");
             System.out.println();
-            ecrire(Couleur.bleu, "\tf - fin du monde");
+            ecrire(Couleur.gris, "\tf - fin du monde");
             System.out.println();
 
             // choix
